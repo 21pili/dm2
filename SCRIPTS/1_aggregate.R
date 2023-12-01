@@ -54,4 +54,4 @@ df <- population %>%
     left_join(gdp)
 
 ### Export ###
-write.csv(df, "INTERMEDIATE/raw_indicators.csv")
+write.csv(df, "INTERMEDIATE/raw_indicators.csv", row.names = FALSE)
