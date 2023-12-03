@@ -14,7 +14,6 @@ cycles <- read.csv("OUTPUT/DATA/cycles.csv") %>% mutate(
 #GDP
 gdp <- cycles %>% ggplot() +
     geom_line(aes(x = YEAR, y = GDP)) +
-    geom_abline(intercept = -25.479, slope = 0.017, color = "#000000", linetype = "dashed") + #nolint
     theme(
         axis.title.x = element_text(size = 10),
         axis.title.y = element_text(size = 10),
