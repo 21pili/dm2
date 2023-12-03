@@ -21,3 +21,4 @@ df <- df %>% mutate(
 
 ### Export ###
 write.csv(df, "INTERMEDIATE/pc_indicators.csv", row.names = FALSE)
+rm()

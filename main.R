@@ -7,7 +7,7 @@ library(tidyverse)
 library(knitr)
 
 # Chemin vers le dossier contenant les scripts R
-chemin_dossier <- "SCRIPTS"
+chemin_dossier <- "R_SCRIPTS"
 
 # Liste des fichiers dans le dossier, triés par ordre alphabétique
 scripts <- list.files(chemin_dossier, pattern = "\\.R$", full.names = TRUE)

@@ -5,7 +5,6 @@
 ### Libraries ###
 library(tidyverse)
 
-
 ### Imports ###
 population <- read.csv("RAW/POPTOTFRA647NWDB.csv", col.names = c("DATE", "POP"))  #Millions of People # nolint
 ahwpe <- read.csv("RAW/AVHWPEFRA065NRUG.csv", col.names = c("DATE", "AHWPE")) #Hours #nolint
@@ -13,7 +12,6 @@ investment <- read.csv("RAW/NAEXKP04FRQ189S.csv", col.names = c("DATE", "INVESTM
 employed_pop <- read.csv("RAW/FRAEMPT.csv", col.names = c("DATE", "EMPLOYED_POP")) #Millions of People #nolint
 consumption <- read.csv("RAW/NAEXKP02FRQ189S.csv", col.names = c("DATE", "CONSUMPTION")) #Real Currency #nolint
 gdp <- read.csv("RAW/CLVMNACSCAB1GQFR.csv", col.names = c("DATE", "GDP")) #Real Currency #nolint
-
 
 ### Harmonized dates ###
 population <- population %>% filter(
@@ -55,3 +53,4 @@ df <- population %>%
 
 ### Export ###
 write.csv(df, "INTERMEDIATE/raw_indicators.csv", row.names = FALSE)
+rm()
