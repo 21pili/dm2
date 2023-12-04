@@ -24,256 +24,263 @@
 \lhead{Macroeconomics 1}
 \cfoot{\thepage}
 
-\title{MACROECONOMICS 1 - HOMEWORK}
+\title{MACROECONOMICS 1 - Problem Set 2}
 \author{PILI Pierre $\cdot$ GARDIE Marie $\cdot$ BIGLIETTI Isée}
 \date{\today}
 \begin{document}
 \maketitle
 \section{Data Work}
-\subsubsection*{}
-We used a data about France comming from the FRED website. To be able to respond to the questions of this exercise, we downloaded 6 different data: 
+\subsection{}
+We used a data about France comming from the FRED website. To be able to respond to the questions of this exercise, we downloaded 6 time series: 
 \begin{itemize}
-    \item The Real Gross Domestic Product for France (CLVMNACSCAB1GQFR), in millions of 2010 euros
-    \item The Private Final Consumption Expenditure for France (NAEXKP02FRQ189S), in euros
-    \item The Gross Fixed Capital Formation for France (NAEXKP04FRQ189S), in euros
-    \item The Average Annual Hours Worked by Persons Engaged for France (AVHWPEFRA065NRUG), in hours
-    \item The Employment in France (FRAEMPT), in millions of people
-    \item The total population for France (POPTOTFRA647NWDB), in persons
+    \item Real Gross Domestic Product for France (CLVMNACSCAB1GQFR), in millions of 2010 euros.
+    \item Private Final Consumption Expenditure for France (NAEXKP02FRQ189S), in 2010 euros.
+    \item Gross Fixed Capital Formation for France (NAEXKP04FRQ189S), in 2010 euros.
+    \item Average Annual Hours Worked by Persons Engaged for France (AVHWPEFRA065NRUG), in hours.
+    \item Employment in France (FRAEMPT), in millions of people.
+    \item Total population for France (POPTOTFRA647NWDB), in persons.
 \end{itemize}
-After some conversions, we use the Total population data to make Private Final Consumption and Gross fixed capital formation per capita.
-We used Employment data as well as Average Annual Hours Worked by Persons Engaged and Total population to obtain per capita Hours Worked. 
-Therefore, we easily obtain a joint dataframe with our 5 variables of ineterest: Year, and Investment, Consumption, Hours Worked and GDP, all per capita.
+We used those times series to derive the private final consumption and gross fixed capital formation per capita.
+We used employment data as well as average annual hours worked by persons engaged and total population to obtain per capita hours worked. 
+Therefore, we obtained a joint dataframe with our 5 variables of ineterest: Year, and Investment, Consumption, Hours Worked and GDP, all per capita.
+The regressions we computed on the log of variables gives the expected trends as seen in class for the US economy (See figure \ref{fig:descriptive}).
+We then decomposed the different signals applying an HP-filter and plotted their cyclical components on the same graph (See figure \ref{fig:cycles}).
+We observe that cyclical components are moving in the same direction over time, meaning that the variables at play are procyclical.
+Those results corresponds to what we have seen in class for the US economy.
 
 \begin{figure}
     \centering
-  
-    \begin{subfigure}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/gdp_pc.png}
-      \caption{GDP}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/cons_pc.png}
-      \caption{Consumption}
-    \end{subfigure}
-  
-    \vspace{\baselineskip} % Ajouter un espace vertical
-  
-    \begin{subfigure}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/inv_pc.png}
-      \caption{Investment}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/hours_pc.png}
-      \caption{Hours worked}
-    \end{subfigure}
-  
-    \caption{Descriptive trend of our raw data}
-    \label{fig:descriptive}
-  \end{figure}
-
-\ref{fig:descriptive} show some descriptive statistics about how our raw variables of interest behave. 
-We observe cycles and trends on these graphs. One can estimate a linear trend for the logarithms of the four data series obtaining table 1:
-
-
-
-\subcaptionbox{Tableau 1\label{tab:sub1}}[0.45\textwidth][c]{%
-\begin{tabular}{ccc}
-  \toprule
-  Colonne 1 & Colonne 2 & Colonne 3 \\
-  \midrule
-  Donnée 1 & Donnée 2 & Donnée 3 \\
-  Donnée 4 & Donnée 5 & Donnée 6 \\
-  \bottomrule
-\end{tabular}%
-}
-
-
-
-
-\begin{figure}
-    \centering
-    \subcaptionbox{lm GDP}[0.45\textwidth][c]{%
-      \centering
-      \caption{Real Gross Domestic Product in 2010 Euros per Capita With Respect to Time} 
-      % GDP
-      \begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} } 
-        \\[-1.8ex]\hline 
-        \hline \\[-1.8ex] 
-         & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
-        \cline{2-2} 
-        \\[-1.8ex] & \multicolumn{1}{c}{log(GDP)} \\ 
-        \hline \\[-1.8ex] 
-         YEAR & 0.017^{***} \\ 
-          & (0.001) \\ 
-          & \\ 
-         Constant & -25.479^{***} \\ 
-          & (1.002) \\ 
-          & \\ 
-        \hline \\[-1.8ex] 
-        Observations & \multicolumn{1}{c}{25} \\ 
-        R$^{2}$ & \multicolumn{1}{c}{0.981} \\ 
-        Adjusted R$^{2}$ & \multicolumn{1}{c}{0.980} \\ 
-        Residual Std. Error & \multicolumn{1}{c}{0.018 (df = 23)} \\ 
-        F Statistic & \multicolumn{1}{c}{1,163.722$^{***}$ (df = 1; 23)} \\ 
-        \hline 
-        \hline \\[-1.8ex] 
-        \textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
-        \end{tabular}
-    }
-    \hfill
-    \subcaptionbox{lm Consumption}[0.45\textwidth][c]{%
-      \centering
-      \caption{Gross Fixed Capital Formation in Constant Prices per Capita With Respect to Time} 
-      % Consumption
-      \begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} } 
-        \\[-1.8ex]\hline 
-        \hline \\[-1.8ex] 
-         & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
-        \cline{2-2} 
-        \\[-1.8ex] & \multicolumn{1}{c}{log(CONSUMPTION)} \\ 
-        \hline \\[-1.8ex] 
-         YEAR & 0.016^{***} \\ 
-          & (0.0005) \\ 
-          & \\ 
-         Constant & -22.854^{***} \\ 
-          & (0.982) \\ 
-          & \\ 
-        \hline \\[-1.8ex] 
-        Observations & \multicolumn{1}{c}{25} \\ 
-        R$^{2}$ & \multicolumn{1}{c}{0.977} \\ 
-        Adjusted R$^{2}$ & \multicolumn{1}{c}{0.976} \\ 
-        Residual Std. Error & \multicolumn{1}{c}{0.018 (df = 23)} \\ 
-        F Statistic & \multicolumn{1}{c}{996.105$^{***}$ (df = 1; 23)} \\ 
-        \hline 
-        \hline \\[-1.8ex] 
-        \textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
-        \end{tabular} 
-    }
-    \vspace{\baselineskip} % Ajouter un espace vertical
-    \subcaptionbox{lm Investment}[0.45\textwidth][c]{%
-      \centering
-      \caption{Private Final Consumption Expenditure in Constant Prices per Capita With Respect to Time} 
-      % investment
-      \begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} } 
-        \\[-1.8ex]\hline 
-        \hline \\[-1.8ex] 
-         & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
-        \cline{2-2} 
-        \\[-1.8ex] & \multicolumn{1}{c}{log(INVESTMENT)} \\ 
-        \hline \\[-1.8ex] 
-         YEAR & 0.017^{***} \\ 
-          & (0.002) \\ 
-          & \\ 
-         Constant & -26.808^{***} \\ 
-          & (3.294) \\ 
-          & \\ 
-        \hline \\[-1.8ex] 
-        Observations & \multicolumn{1}{c}{25} \\ 
-        R$^{2}$ & \multicolumn{1}{c}{0.823} \\ 
-        Adjusted R$^{2}$ & \multicolumn{1}{c}{0.815} \\ 
-        Residual Std. Error & \multicolumn{1}{c}{0.060 (df = 23)} \\ 
-        F Statistic & \multicolumn{1}{c}{106.798$^{***}$ (df = 1; 23)} \\ 
-        \hline 
-        \hline \\[-1.8ex] 
-        \textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
-        \end{tabular}
-    }
-    \hfill
-    \subcaptionbox{lm Hours worked}[0.45\textwidth][c]{%
-      \centering
-      \caption{Hours Worked Annualy per Capita With Respect to Time} 
-      % Hours
-      \begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} } 
-        \\[-1.8ex]\hline 
-        \hline \\[-1.8ex] 
-         & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
-        \cline{2-2} 
-        \\[-1.8ex] & \multicolumn{1}{c}{log(HOURS\_WORKED)} \\ 
-        \hline \\[-1.8ex] 
-         YEAR & -0.005^{***} \\ 
-          & (0.001) \\ 
-          & \\ 
-         Constant & 16.407^{***} \\ 
-          & (1.392) \\ 
-          & \\ 
-        \hline \\[-1.8ex] 
-        Observations & \multicolumn{1}{c}{25} \\ 
-        R$^{2}$ & \multicolumn{1}{c}{0.688} \\ 
-        Adjusted R$^{2}$ & \multicolumn{1}{c}{0.674} \\ 
-        Residual Std. Error & \multicolumn{1}{c}{0.025 (df = 23)} \\ 
-        F Statistic & \multicolumn{1}{c}{50.698$^{***}$ (df = 1; 23)} \\ 
-        \hline 
-        \hline \\[-1.8ex] 
-        \textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
-        \end{tabular} 
-    }
-    \caption{Four regression tables from our four variables' trend}
-    \label{fig:lmtables}
-\end{figure}
-
-These table can be illustrated as follow:
-
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{1\textwidth}
       \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loggdp_pc.png}
-      \caption{Log GDP}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+    \vspace{-20pt}
+    \begin{subfigure}[b]{1\textwidth}
       \includegraphics[width=\textwidth]{OUTPUT/MEDIA/logcons_pc.png}
-      \caption{Log Consumption}
     \end{subfigure}
-    \vspace{\baselineskip} % Ajouter un espace vertical
-    \begin{subfigure}[b]{0.45\textwidth}
+    \vspace{-20pt}
+    \begin{subfigure}[b]{1\textwidth}
       \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loginv_pc.png}
-      \caption{Log Investment}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+    \vspace{-20pt}
+    \begin{subfigure}[b]{1\textwidth}
       \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loghours_pc.png}
-      \caption{Log Hours worked}
     \end{subfigure}
-    \caption{Linear trend for the logarithms of our four data series}
-    \label{fig:logtrends}
+    \caption{GDP, Consumption, Investment and Hours Worked per Capita}
+    \label{fig:descriptive}
 \end{figure}
-
-The trend is there represented by the linear relation, a trend with constant growth rate, were any deviation from this trend, represented by the dashed line on \ref{fig:logtrends} are what we can call "Business Cycles".
-But we would like to visualize better those business cycles. Using a HP-filter, we can decompose the trending and the cyclical part from the variations of each variables through time. \ref{fig:cycles} shows us that our 4 variables seems to vary jointly through time, to be procyclical. However, some are still wider than others. 
 
 \begin{figure}[h]
     \centering
+    \hspace{-20pt}
     \begin{tikzpicture}[baseline=(current bounding box.center)]
-        \node at (0,0) {\includegraphics[width=0.9\textwidth]{OUTPUT/MEDIA/cycles.png}};
+        \node at (0,0) {\includegraphics[width=1\textwidth]{OUTPUT/MEDIA/cycles.png}};
     \end{tikzpicture}
-    \caption{Business Cycles in our main variables' vraiations}
+    \caption{Cyclical compenents in HP decomposition for GDP, Consumption Investment in 2010 Euros and Hours Worked per Capita}
     \label{fig:cycles}
 \end{figure}
 
-Those illustrations and tables help us better understand the compositions of these main macroeconomic variables' variations trough time. 
-The graph clearly shows the ascending and descending periods of the cycles, as well as the fact that certain variables, such as GDP and hours worked, have more stable, less wide-ranging oscillations than the other two (consumption and investment).
-While it gives us an idea of our variables' behavior, though, it doesn't allow us to compare them with precision. 
 
-\subsubsection*{}
-In order to compare variations of our variables of interest, we need to compute some indicators. 
-In \ref{fig:corr_RSD}, one can observe the the relative standard deviations and correlation coefficients, taking GDP as a benchmark.
-
-\begin{table}
-    \centering
-    \caption{Correlation coefficient and Relative Standard Deviations (RDS), with GDP as a benchmark}
-    \label{tab:corr_RSD}
-    \csvautotabular{OUTPUT/TABLES/corr_RSD.csv}
+\subsection{}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+      \hline
+      & Investment & Consumption & Hours Worked \\
+      \hline
+      Correlation with GDP & 0.88 & 0.75 & 0.94 \\
+      \hline
+      RSD with GDP & 0.51 & 0.1 & 0.69 \\
+      \hline
+  \end{tabular}
+  \caption{Correlation and Relative Standard Deviation with Respect to GDP}
 \end{table}
 
-In the lecture, we evaluated the same indicators but for the case of the US. Let's compare our results to those. 
-\newline
 First of all, we had that consumption, investment and hours worked were strongly procyclical for the US. 
-Observing that all of our correlation coeficient with GDP are positives and close to $1$, we can enforce the same conclusion for these $3$ variables, with consumption and investment being even more procyclical, their correlation coefficient being over $0.9$. 
+Observing that all of our correlation coeficient with GDP are positives and close to $1$, we can enforce the same conclusion for these $3$ variables, with consumption and investment being even more procyclical.
 \newline    
 Second of all, we saw that for the US, consumption were less volatile than GDP, whereas investment were more.
 Using the results we found for Relative Standard Deviation (RSD), we have that $\sigma_Y > \sigma_I > \sigma_C > \sigma_H$ for France. these differences make sense: they can be explained by the fact that we're not dealing with the same country, and so its political behaviour (investment, work and consumption) can be very different.
+
+\newpage
+
+
+\newpage
+
+
+\section{A Simple model of business cycles}
+\subsubsection*{Notations}
+In the following, we will use freely the notations below :
+\begin{itemize}
+    \item $Y_t = F(K_t, L_t) = A_t K_t^{\alpha}(1 - L_t)^{1 - \alpha}$
+    \item $W_t = A_t K_t^{\alpha} (1 - \alpha)(1 - L_t)^{-\alpha} = - F_L(K_t,L_t)$
+    \item $R_t = \alpha A_t K_t^{\alpha -1 } (1 - L_t)^{1 - \alpha} + 1 - \delta = F_K(K_t, L_t) + 1 - \delta$
+\end{itemize}
+
+
+\subsection{}
+The lagrangian of the maximization problem writes :
+\begin{equation*}
+    \mathcal{L}(C_t,L_t,K_{t+1}) = \mathbb{E}_0\sum_{t=0}^{\infty} \Big[ \beta^t (\ln C_t + v(L_t)) + \lambda_t (F(K_t, L_t) + (1 - \delta)K_t - C_t - K_{t+1}) \Big]
+\end{equation*}
+Deriving the associated FOCs for $t \in \mathbb{N}$ viewed from date $t$:
+\[
+\begin{cases}
+    \begin{array}{@{}l}
+        \displaystyle \frac{\partial \mathcal{L}}{\partial C_t} =  \frac{\beta^t}{C_t} - \lambda_t = 0\\[12pt]
+        \displaystyle \frac{\partial \mathcal{L}}{\partial L_t} = \beta^t v'(L_t) - \lambda_t W_t = 0\\[12pt]
+        \displaystyle \frac{\partial \mathcal{L}}{\partial K_{t+1}} = \mathbb{E}_t \left( \lambda_{t+1} R_{t+1} \right) - \lambda_t = 0\\
+    \end{array}
+\end{cases}
+\Longleftrightarrow \quad
+\begin{cases}
+    \begin{array}{@{}l}
+        \displaystyle \frac{\beta^t}{C_t} = \lambda_t\\[12pt]
+        \displaystyle \beta^t v'(L_t) = \lambda_t W_t\\[12pt]
+        \displaystyle \mathbb{E}_t \left( \lambda_{t+1} R_{t+1} \right) = \lambda_t\\
+    \end{array}
+\end{cases}
+\]
+Inserting the expressions of $\lambda_t$ and $\lambda_{t+1}$ from the first equation, one gets the Euler intertemporal equation: 
+\begin{equation*}
+    \mathbb{E}_t \left( \frac{\beta^{t+1}}{C_{t+1}} R_{t+1} \right) = \frac{\beta^t}{C_t}
+\end{equation*}
+Which implies : 
+\begin{equation*}
+   \beta~\mathbb{E}_t \left( \frac{C_t}{C_{t+1}} R_{t+1} \right) = 1
+\end{equation*}
+
+
+\subsection{}
+With $\delta = 1$, the Euler Equation becomes: 
+\begin{equation*}
+   \beta~\mathbb{E}_t \left( \frac{C_t}{C_{t+1}} F_K(K_{t+1}, L_{t+1}) \right) = 1
+\end{equation*}
+Using that $C_t = (1 - s_t) Y_t$, and assuming a constant saving ratio $s$: 
+\begin{equation*}
+   \beta~\mathbb{E}_t \left( \frac{(1 - s)Y_t}{(1-s)Y_{t+1}}  F_K(K_{t+1}, L_{t+1}) \right) = 1
+\end{equation*}
+Which implies :
+\begin{equation*}
+   \beta~\mathbb{E}_t \left( \frac{Y_t}{Y_{t+1}} A_{t+1} \alpha K_{t+1}^{\alpha - 1} (1 - L_{t+1})^{1 - \alpha} \right) = 1
+\end{equation*}
+Yet, $\displaystyle \frac{Y_{t+1}}{K_{t+1}}= A_{t+1} K_{t+1}^{\alpha-1} (1 - L_{t+1})^{1 - \alpha}$. 
+Thus, one gets:
+\begin{alignat*}{2}
+    1   &= \alpha \beta~\mathbb{E}_t\frac{Y_t}{Y_{t+1}} \frac{Y_{t+1}}{K_{t+1}} \quad\\
+        &= \alpha \beta~\mathbb{E}_t \frac{Y_t}{K_{t+1}} \quad\\
+        &= \alpha \beta~\mathbb{E}_t \frac{Y_t}{sY_t} \quad\\
+        &= \frac{\alpha \beta}{s} \quad
+\end{alignat*}
+Which yields $s = \alpha \beta$.\newline\newline
+This constant saving rate was deducted from the first and third equation of the system, which means that a solution with a constant saving rate complies with the Euler's equation. It is clear that the law of motion of capital is also verified under a constant saving rate. Thus, the constant saving rate solves the planners' problem under the condition that the intratemporal condition can be verified.\newline
+Using the first and the second first order conditions to derive the intratemporal condition:
+\begin{alignat*}{2}
+    v'(L_t) &= \frac{W_t}{C_t} \quad\\
+            &= \frac{W_t}{(1-\alpha \beta)F(K_t, L_t)}
+\end{alignat*}
+Simplifying,
+\begin{equation*}
+    g(L_t) \equiv (1-L_t)v'(L_t) = \frac{1 - \alpha}{1 - \alpha \beta}
+\end{equation*}
+Assuming that $v$ is a well behaved periodic utility function with decreasing marginal utility of leisure, and $v'(0)=+\infty$ (infinite marginal utility for the first unit of leisure), the previous equation has a unique solution in $L_t$ and $s$ thus solves the planner's maximization problem. Indeed, $L \equiv g^{-1}\left( \frac{1 - \alpha}{1 - \alpha \beta} \right)$ is well defined and unique as $g$ is decreasing on $(0, 1]$, $g(0) = +\infty$ and $g(1) = 0$.\newline
+A constant saving rate implies a constant labor supply of $N = 1 - L$.
+
+
+
+\subsection{}
+As the constant saving rate is equal to $\alpha \beta $, consumption is clearly procyclical as experienced in reality since: 
+\begin{equation*}
+    \frac{\partial Y_t}{\partial C_t} = \frac{1}{1 - \alpha \beta} > 0
+\end{equation*}
+Similarly, investment is procyclical and matches reality since $I_t = K_{t+1} = \alpha \beta Y_t$ and so:
+\begin{equation*}
+    \frac{\partial Y_t}{\partial I_t} = \frac{1}{\alpha \beta} > 0
+\end{equation*}
+However, as $W_t = v'(L)C_t$, an increase in wages implies a proportional increase in consumption but leisure and labor supply remain unchanged (see 2.2). Thus, in this simplified model, the stylised facts on working hours are not verified: indeed, employment and hours are observed strongly procyclical.  
+
+\section{Savings rates in the Ramsey model}
+\subsubsection*{Notations}
+As in the previous section, we will use freely the results and notations below~:
+\begin{itemize}
+    \item $Y_t = F(K_t, L_t) = A_t K_t^{\alpha}$
+    \item $\displaystyle R_t = \alpha A_t K_t^{\alpha -1 } = F_K(K_t, L_t) = \alpha \frac{Y_t}{K_t}$
+\end{itemize}
+\subsection{}
+In this question we assume $\sigma \not= 1$.
+The lagrangian of the maximization problem writes :
+\begin{equation*}
+    \mathcal{L}(C_t,L_t,K_{t+1}) = \mathbb{E}_0\sum_{t=0}^{\infty} \left[ \beta^t \frac{C_t^{1-\sigma} - 1}{1-\sigma} + \lambda_t \Big( F(K_t, L_t) - C_t - K_{t+1} \Big) \right]
+\end{equation*}
+Deriving the associated FOCs for $t \in \mathbb{N}$ viewed from date $t$:
+\[
+\begin{cases}
+    \begin{array}{@{}l}
+        \displaystyle \frac{\partial \mathcal{L}}{\partial C_t} =  \frac{\beta^t}{C_t^{\sigma}} - \lambda_t = 0\\[12pt]
+        \displaystyle \frac{\partial \mathcal{L}}{\partial K_{t+1}} = \mathbb{E}_t \left( \lambda_{t+1} R_{t+1} \right) - \lambda_t = 0\\
+    \end{array}
+\end{cases}
+\Longleftrightarrow \quad
+\begin{cases}
+    \begin{array}{@{}l}
+        \displaystyle \frac{\beta^t}{C_t^{\sigma}} = \lambda_t\\[12pt]
+        \displaystyle \mathbb{E}_t \left( \lambda_{t+1} R_{t+1} \right) = \lambda_t\\
+    \end{array}
+\end{cases}
+\]
+Inserting the expressions of $\lambda_t$ and $\lambda_{t+1}$ from the first equation, one gets the Euler intertemporal equation: 
+\begin{equation*}
+   \beta~\mathbb{E}_t \left[ \left( \frac{C_t}{C_{t+1}} \right)^{\sigma} R_{t+1} \right] = 1
+\end{equation*}
+Assuming a constant saving rate $s$ and :
+\begin{equation*}
+   \beta~\mathbb{E}_t \left[ \left(\frac{(1 - s)Y_t}{(1-s)Y_{t+1}}\right)^{\sigma}  F_K(K_{t+1}) \right] = 1
+\end{equation*}
+Which implies :
+\begin{equation*}
+   \alpha \beta~\mathbb{E}_t \left( \frac{Y_t^{\sigma}}{Y_{t+1}^{\sigma}} \frac{Y_{t+1}}{K_{t+1}} \right) = 1
+\end{equation*}
+Replacing $K_{t+1}$ by $sY_t$ and solving for $s$ yields :
+\begin{equation*}
+   s = \alpha \beta~\mathbb{E}_t \left( \frac{Y_t^{\sigma-1}}{Y_{t+1}^{\sigma-1}} \right)
+\end{equation*}
+Thus, $s$ is not constant out of the steady state, which is a contradiction.
+\subsection{}
+Using the definition of $s_t$ :
+\begin{alignat*}{2}
+    s_t &= 1 - \frac{C_t}{Y_t} \quad\\
+        &= \frac{Y_t - C_t}{Y_t} \quad
+\end{alignat*}
+Using the law of motion of capital under full depreciation of capital ($C_t~+~K_{t+1}~=~Y_t$).
+\begin{alignat*}{2}
+    s_t &= \frac{K_{t+1}}{Y_t} = \frac{\Bar{K}}{\Bar{Y}} = \Bar{s} \quad
+\end{alignat*}
+Thus, $s$ is indeed equal to capital-output ratio at the steady state.\newline
+To show that the current capital to output ratio is a lower bound for the savings rate, it is enough to show that $K_{t+1} > K_t$ when $K_t < \Bar{K}$, then :
+\begin{alignat*}{2}
+    \frac{K_{t}}{Y_t} &< \frac{K_{t+1}}{Y_t} = s_t \quad
+\end{alignat*}
+$K_t$ is now assumed to be below $\Bar{K}$. Rewriting the resource constraint by subtracting $K_t$ on both sides :
+\begin{alignat*}{2}
+    K_{t+1} - K_t &= F(K_t) - K_t - C_t \quad
+\end{alignat*}
+Choosing, consumption to be on the saddle path towards $\Bar{K}$, then $C_t$ and $K_t$ are such that :
+\begin{alignat*}{2}
+    F(K_t) - K_t - C_t > 0 \quad
+\end{alignat*}
+\subsection{}
+Rewriting the Euler's equation
+\begin{alignat*}{2}
+    \mathbb{E}_{t} \frac{C_{t+1}}{C_{t}} &=  \mathbb{E}_{t} \big( \alpha \beta F_K(K_{t+1}) \big)^{\frac{1}{\sigma}} \quad
+\end{alignat*}
+It is enough to show that $\displaystyle \alpha \beta F_K(K_{t+1}) > 1$ when $K_{t+1} < \Bar{K}$. \newline
+Indeed, it would imply that, so as the equation still holds, the current consumption should approach zero so that the ratio on the left side of the equation becomes arbitrarily large when $\sigma$ approaches zero. \newline
+At the steady state, Euler's equation implies :
+$$\alpha \beta F_K(\Bar{K}) = 1$$
+$F_K$ is a decreasing function as $F$ is neoclassical, which implies that $\displaystyle \alpha \beta F_K(K_{t+1}) > 1$ and ends the proof.
+\subsection{}
+At the steady, the Euler's equation implies $\Bar{s} = \alpha \beta$ but the previous inequality can be rewritten as $s_t < \alpha \beta = \Bar{s}$. It implies that $(s_t)$ is a sequence that is below $\Bar{s}$ during the transition to the steady state when $K_0 < \Bar{K}$.
+Economically, it can be interpreted as such in order to reach $\Bar{K}$, the stock of capital needs to increase. Therefore, households will increase savings during the transition towards the steady state, in order to invest more in each period.
+
 
 \end{document}
 

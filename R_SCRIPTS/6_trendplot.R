@@ -16,8 +16,8 @@ gdp <- cycles %>% ggplot() +
     geom_line(aes(x = YEAR, y = log(GDP))) +
     geom_abline(intercept = -25.149, slope = 0.017, color = "#000000", linetype = "dashed") + #nolint
     annotate("text", x = max(cycles$YEAR), y = 8.79,
-             label = paste("Slope:", round(coef(lm_gdp)[2], 4)),
-             hjust = 1, vjust = 1, size = 4, family = "Titillium Web") +
+             label = paste("Slope:", 0.017),
+             hjust = 1, vjust = 1, size = 5) +
     theme(
         axis.title.x = element_text(size = 10),
         axis.title.y = element_text(size = 10),
@@ -27,7 +27,7 @@ gdp <- cycles %>% ggplot() +
     ) +
     labs(title = "Gross Domestic Product per Capita",
        x = "Year",  # Titre de l'axe x
-       y = "2010 Euros")  # Titre de l'axe y
+       y = "log GDP")  # Titre de l'axe y
 
 ggsave("OUTPUT/MEDIA/loggdp_pc.png", plot = gdp, height = 3, width = 8, units = "in") #nolint
 
@@ -36,8 +36,8 @@ inv <- cycles %>% ggplot() +
     geom_line(aes(x = YEAR, y = log(INVESTMENT))) +
     geom_abline(intercept = -26.632, slope = 0.017, color = "#000000", linetype = "dashed") + #nolint
     annotate("text", x = max(cycles$YEAR), y = 7.348,
-             label = paste("Slope:", round(coef(lm_inv)[2], 4)),
-             hjust = 1, vjust = 1, size = 4, family = "Titillium Web") +
+             label = paste("Slope:", 0.017),
+             hjust = 1, vjust = 1, size = 5) +
     theme(
         axis.title.x = element_text(size = 10),
         axis.title.y = element_text(size = 10),
@@ -47,7 +47,7 @@ inv <- cycles %>% ggplot() +
     ) +
     labs(title = "Fixed Capital Formation per Capita",
        x = "Year",  # Titre de l'axe x
-       y = "2010 Euros")  # Titre de l'axe y
+       y = "log Formation")  # Titre de l'axe y
 
 ggsave("OUTPUT/MEDIA/loginv_pc.png", plot = inv, height = 3, width = 8, units = "in") #nolint
 
@@ -56,8 +56,8 @@ cons <- cycles %>% ggplot() +
     geom_line(aes(x = YEAR, y = log(CONSUMPTION))) +
     geom_abline(intercept = -23.734, slope = 0.016, color = "#000000", linetype = "dashed") + #nolint
     annotate("text", x = max(cycles$YEAR), y = 8.239,
-             label = paste("Slope:", round(coef(lm_cons)[2], 4)),
-             hjust = 1, vjust = 1, size = 4, family = "Titillium Web") +
+             label = paste("Slope:", 0.016),
+             hjust = 1, vjust = 1, size = 5) +
     theme(
         axis.title.x = element_text(size = 10),
         axis.title.y = element_text(size = 10),
@@ -67,7 +67,7 @@ cons <- cycles %>% ggplot() +
     ) +
     labs(title = "Private Final Consumption per Capita",
        x = "Year",  # Titre de l'axe x
-       y = "2010 Euros")  # Titre de l'axe y
+       y = "log Consumption")  # Titre de l'axe y
 
 ggsave("OUTPUT/MEDIA/logcons_pc.png", plot = cons, height = 3, width = 8, units = "in") #nolint
 
@@ -76,8 +76,8 @@ hours <- cycles %>% ggplot() +
     geom_line(aes(x = YEAR, y = log(HOURS_WORKED))) +
     geom_abline(intercept = 16.457, slope = -0.005, color = "#000000", linetype = "dashed") + #nolint
     annotate("text", x = 1999, y = 6.51,
-             label = paste("Slope:", round(coef(lm_hours)[2], 4)),
-             hjust = 1, vjust = 1, size = 4, family = "Titillium Web") +
+             label = paste("Slope:", -0.005),
+             hjust = 1, vjust = 1, size = 5) +
     theme(
         axis.title.x = element_text(size = 10),
         axis.title.y = element_text(size = 10),
@@ -87,6 +87,6 @@ hours <- cycles %>% ggplot() +
     ) +
     labs(title = "Hours Worked Annually per Capita",
        x = "Year",  # Titre de l'axe x
-       y = "Hours")  # Titre de l'axe y
+       y = "log Hours")  # Titre de l'axe y
 
 ggsave("OUTPUT/MEDIA/loghours_pc.png", plot = hours, height = 3, width = 8, units = "in") #nolint
