@@ -107,7 +107,7 @@ Using the results we found for Relative Standard Deviation (RSD), we have that $
 In the following, we will use freely the notations below :
 \begin{itemize}
     \item $Y_t = F(K_t, L_t) = A_t K_t^{\alpha}(1 - L_t)^{1 - \alpha}$
-    \item $W_t = A_t K_t^{\alpha} (1 - \alpha)(1 - L_t)^{-\alpha} = - F_L(K_t,L_t)$
+    \item $w_t = A_t K_t^{\alpha} (1 - \alpha)(1 - L_t)^{-\alpha} = - F_L(K_t,L_t)$
     \item $R_t = \alpha A_t K_t^{\alpha -1 } (1 - L_t)^{1 - \alpha} + 1 - \delta = F_K(K_t, L_t) + 1 - \delta$
 \end{itemize}
 
@@ -122,7 +122,7 @@ Deriving the associated FOCs for $t \in \mathbb{N}$ viewed from date $t$:
 \begin{cases}
     \begin{array}{@{}l}
         \displaystyle \frac{\partial \mathcal{L}}{\partial C_t} =  \frac{\beta^t}{C_t} - \lambda_t = 0\\[12pt]
-        \displaystyle \frac{\partial \mathcal{L}}{\partial L_t} = \beta^t v'(L_t) - \lambda_t W_t = 0\\[12pt]
+        \displaystyle \frac{\partial \mathcal{L}}{\partial L_t} = \beta^t v'(L_t) - \lambda_t w_t = 0\\[12pt]
         \displaystyle \frac{\partial \mathcal{L}}{\partial K_{t+1}} = \mathbb{E}_t \left( \lambda_{t+1} R_{t+1} \right) - \lambda_t = 0\\
     \end{array}
 \end{cases}
@@ -130,7 +130,7 @@ Deriving the associated FOCs for $t \in \mathbb{N}$ viewed from date $t$:
 \begin{cases}
     \begin{array}{@{}l}
         \displaystyle \frac{\beta^t}{C_t} = \lambda_t\\[12pt]
-        \displaystyle \beta^t v'(L_t) = \lambda_t W_t\\[12pt]
+        \displaystyle \beta^t v'(L_t) = \lambda_t w_t\\[12pt]
         \displaystyle \mathbb{E}_t \left( \lambda_{t+1} R_{t+1} \right) = \lambda_t\\
     \end{array}
 \end{cases}
@@ -170,14 +170,14 @@ Which yields $s = \alpha \beta$.\newline\newline
 This constant saving rate was deducted from the first and third equation of the system, which means that a solution with a constant saving rate complies with the Euler's equation. It is clear that the law of motion of capital is also verified under a constant saving rate. Thus, the constant saving rate solves the planners' problem under the condition that the intratemporal condition can be verified.\newline
 Using the first and the second first order conditions to derive the intratemporal condition:
 \begin{alignat*}{2}
-    v'(L_t) &= \frac{W_t}{C_t} \quad\\
-            &= \frac{W_t}{(1-\alpha \beta)F(K_t, L_t)}
+    v'(L_t) &= \frac{w_t}{C_t} \quad\\
+            &= \frac{w_t}{(1-\alpha \beta)F(K_t, L_t)}
 \end{alignat*}
 Simplifying,
 \begin{equation*}
     g(L_t) \equiv (1-L_t)v'(L_t) = \frac{1 - \alpha}{1 - \alpha \beta}
 \end{equation*}
-Assuming that $v$ is a well behaved periodic utility function with decreasing marginal utility of leisure, and $v'(0)=+\infty$ (infinite marginal utility for the first unit of leisure), the previous equation has a unique solution in $L_t$ and $s$ thus solves the planner's maximization problem. Indeed, $L \equiv g^{-1}\left( \frac{1 - \alpha}{1 - \alpha \beta} \right)$ is well defined and unique as $g$ is decreasing on $(0, 1]$, $g(0) = +\infty$ and $g(1) = 0$.\newline
+Assuming that $v$ is a well behaved periodic utility function with decreasing marginal utility of leisure, the previous equation has a unique solution in $L_t$ and $s$ thus solves the planner's maximization problem. Indeed, $L \equiv g^{-1}\left( \frac{1 - \alpha}{1 - \alpha \beta} \right)$ is well defined and unique as $g$ is decreasing on $(0, 1]$.\newline
 A constant saving rate implies a constant labor supply of $N = 1 - L$.
 
 
@@ -191,7 +191,7 @@ Similarly, investment is procyclical and matches reality since $I_t = K_{t+1} = 
 \begin{equation*}
     \frac{\partial Y_t}{\partial I_t} = \frac{1}{\alpha \beta} > 0
 \end{equation*}
-However, as $W_t = v'(L)C_t$, an increase in wages implies a proportional increase in consumption but leisure and labor supply remain unchanged (see 2.2). Thus, in this simplified model, the stylised facts on working hours are not verified: indeed, employment and hours are observed strongly procyclical.  
+However, as $w_t = v'(L)C_t$, an increase in wages implies a proportional increase in consumption but leisure and labor supply remain unchanged (see 2.2). Thus, in this simplified model, the stylised facts on working hours are not verified: indeed, employment and hours are observed strongly procyclical.  
 
 \section{Savings rates in the Ramsey model}
 \subsubsection*{Notations}
