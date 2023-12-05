@@ -16,16 +16,16 @@ cor_inv <- cor(cycles$GDP_C, cycles$INVESTMENT_C)
 cor_GDP <- cor(cycles$GDP_C, cycles$GDP_C)
 
 ### Relative sd ###
-RSD_GDP <- sd(cycles$GDP_C)/sd(cycles$GDP_C)
-RSD_cons <- sd(cycles$CONSUMPTION_C)/sd(cycles$GDP_C)
-RSD_hours <- sd(cycles$HOURS_WORKED_C)/sd(cycles$GDP_C)
-RSD_inv <- sd(cycles$INVESTMENT_C)/sd(cycles$GDP_C)
+sd_GDP <- sd(cycles$GDP_C)
+sd_cons <- sd(cycles$CONSUMPTION_C)
+sd_hours <- sd(cycles$HOURS_WORKED_C)
+sd_inv <- sd(cycles$INVESTMENT_C)
 
 ### Save as a dataframe ###
-df <- data.frame(GDP = c(cor_GDP, RSD_GDP),
-                CONSUMPTION = c(cor_cons, RSD_cons),
-                HOURS_WORKED = c(cor_hours, RSD_hours),
-                INVESTMENT = c(cor_inv, RSD_inv))
+df <- data.frame(GDP = c(cor_GDP, sd_GDP),
+                CONSUMPTION = c(cor_cons, sd_cons),
+                HOURS_WORKED = c(cor_hours, sd_hours),
+                INVESTMENT = c(cor_inv, sd_inv))
 rownames(df) <- c("Correlations with GDP", "Relative SD to GDP's SD")
 
 write.csv(df, "OUTPUT/TABLES/corr_RSD.csv", row.names = FALSE)

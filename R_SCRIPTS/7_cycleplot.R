@@ -15,7 +15,7 @@ cycle_plots <- ggplot(cycles) +
   geom_line(aes(x = YEAR, y = GDP_C, linetype = "GDP"), color = "#000000", size = 1) + #nolint
   geom_line(aes(x = YEAR, y = INVESTMENT_C, linetype = "Investment"), color = "#000000", size = 1) + #nolint
   geom_line(aes(x = YEAR, y = CONSUMPTION_C, linetype = "Consumption"), color = "#7d7d7d", size = 1) + #nolint
-  geom_line(aes(x = YEAR, y = 10 * HOURS_WORKED_C, linetype = "Hours Worked"), color = "#7d7d7d", size = 1) + #nolint
+  geom_line(aes(x = YEAR, y = HOURS_WORKED_C, linetype = "Hours Worked"), color = "#7d7d7d", size = 1) + #nolint
   scale_y_continuous(
     name = "GDP, Investment, Consumption, Hours Worked",
   ) +

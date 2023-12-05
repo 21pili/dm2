@@ -47,17 +47,18 @@ The regressions we computed on the log of variables gives the expected trends as
 We then decomposed the different signals applying an HP-filter and plotted their cyclical components on the same graph (See figure \ref{fig:cycles}).
 We observe that cyclical components are moving in the same direction over time, meaning that the variables at play are procyclical.
 Those results corresponds to what we have seen in class for the US economy.
+Though, this graphical decomposition doesn't enable us to precisly compare the volatility of GDP, consumption and hours worked. We then need to compute quantitatively indicators in order to derive some conclusions.
 
 \subsection{}
 \begin{table}[h]
   \centering
-  \begin{tabular}{|c|c|c|c|}
+  \begin{tabular}{|c|c|c|c|c|}
       \hline
-      & Investment & Consumption & Hours Worked \\
+      & GDP & Investment & Consumption & Hours Worked \\
       \hline
-      Correlation with GDP & 0.88 & 0.75 & 0.94 \\
+      Correlation with GDP & 1 & 0.94 & 0.89 & 0.77 \\
       \hline
-      RSD with GDP & 0.51 & 0.1 & 0.69 \\
+      Standard Deviation & 0.016 & 0.05 & 0.015 & 0.016 \\
       \hline
   \end{tabular}
   \caption{Correlation and Relative Standard Deviation with Respect to GDP}
@@ -66,9 +67,8 @@ Those results corresponds to what we have seen in class for the US economy.
 First of all, we had that consumption, investment and hours worked were strongly procyclical for the US. 
 Observing that all of our correlation coeficient with GDP are positives and close to $1$, we can enforce the same conclusion for these $3$ variables, with consumption and investment being even more procyclical.
 \newline    
-Second of all, we saw that for the US, consumption were less volatile than GDP, whereas investment were more.
-Using the results we found for Relative Standard Deviation (RSD), we have that $\sigma_Y > \sigma_I > \sigma_C > \sigma_H$ for France. these differences make sense: they can be explained by the fact that we're not dealing with the same country, and so its political behaviour (investment, work and consumption) can be very different.
-
+Second of all, we saw that for the US, consumption was less volatile than GDP, whereas investment was more. Regarding hours worked, it was as volitile as GDP
+Using the standard deviation reported in the table above, we have that $\sigma_Y > \sigma_C$, $\sigma_Y < \sigma_I$ and $\sigma_Y = \sigma_H$ for France. So we found exactly the same results as what we saw in the lecture for the case of the US economy!
 
 \begin{figure}
     \centering
