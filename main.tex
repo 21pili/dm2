@@ -48,38 +48,6 @@ We then decomposed the different signals applying an HP-filter and plotted their
 We observe that cyclical components are moving in the same direction over time, meaning that the variables at play are procyclical.
 Those results corresponds to what we have seen in class for the US economy.
 
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{1\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loggdp_pc.png}
-    \end{subfigure}
-    \vspace{-20pt}
-    \begin{subfigure}[b]{1\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/logcons_pc.png}
-    \end{subfigure}
-    \vspace{-20pt}
-    \begin{subfigure}[b]{1\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loginv_pc.png}
-    \end{subfigure}
-    \vspace{-20pt}
-    \begin{subfigure}[b]{1\textwidth}
-      \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loghours_pc.png}
-    \end{subfigure}
-    \caption{GDP, Consumption, Investment and Hours Worked per Capita}
-    \label{fig:descriptive}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \hspace{-20pt}
-    \begin{tikzpicture}[baseline=(current bounding box.center)]
-        \node at (0,0) {\includegraphics[width=1\textwidth]{OUTPUT/MEDIA/cycles.png}};
-    \end{tikzpicture}
-    \caption{Cyclical compenents in HP decomposition for GDP, Consumption Investment in 2010 Euros and Hours Worked per Capita}
-    \label{fig:cycles}
-\end{figure}
-
-
 \subsection{}
 \begin{table}[h]
   \centering
@@ -101,12 +69,39 @@ Observing that all of our correlation coeficient with GDP are positives and clos
 Second of all, we saw that for the US, consumption were less volatile than GDP, whereas investment were more.
 Using the results we found for Relative Standard Deviation (RSD), we have that $\sigma_Y > \sigma_I > \sigma_C > \sigma_H$ for France. these differences make sense: they can be explained by the fact that we're not dealing with the same country, and so its political behaviour (investment, work and consumption) can be very different.
 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{1\textwidth}
+        \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loggdp_pc.png}
+    \end{subfigure}
+    \vspace{-20pt}
+    \begin{subfigure}[b]{1\textwidth}
+        \includegraphics[width=\textwidth]{OUTPUT/MEDIA/logcons_pc.png}
+    \end{subfigure}
+    \vspace{-20pt}
+    \begin{subfigure}[b]{1\textwidth}
+        \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loginv_pc.png}
+    \end{subfigure}
+    \vspace{-20pt}
+    \begin{subfigure}[b]{1\textwidth}
+        \includegraphics[width=\textwidth]{OUTPUT/MEDIA/loghours_pc.png}
+    \end{subfigure}
+    \caption{GDP, Consumption, Investment and Hours Worked per Capita}
+    \label{fig:descriptive}
+\end{figure}
+\clearpage % Ajoute une page vide après l'image
+
+\begin{figure}[h]
+    \centering
+    \hspace{-20pt}
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+        \node at (0,0) {\includegraphics[width=1\textwidth]{OUTPUT/MEDIA/cycles.png}};
+    \end{tikzpicture}
+    \caption{Cyclical compenents in HP decomposition for GDP, Consumption Investment and Hours Worked per Capita}
+    \label{fig:cycles}
+\end{figure}
 \newpage
-
-
-\newpage
-
-
 \section{A Simple model of business cycles}
 \subsubsection*{Notations}
 In the following, we will use freely the notations below :

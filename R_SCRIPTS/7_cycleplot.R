@@ -17,11 +17,7 @@ cycle_plots <- ggplot(cycles) +
   geom_line(aes(x = YEAR, y = CONSUMPTION_C, linetype = "Consumption"), color = "#7d7d7d", size = 1) + #nolint
   geom_line(aes(x = YEAR, y = 10 * HOURS_WORKED_C, linetype = "Hours Worked"), color = "#7d7d7d", size = 1) + #nolint
   scale_y_continuous(
-    name = "GDP, Investment, Consumption",
-    sec.axis = sec_axis(~ .,
-                        name = "Hours Worked",
-                        labels = scales::comma_format(scale = 0.1),
-                        breaks = scales::breaks_pretty())
+    name = "GDP, Investment, Consumption, Hours Worked",
   ) +
   scale_linetype_manual(values = c("GDP" = "solid", "Investment" = "dotted", "Consumption" = "solid", "Hours Worked" = "dotted")) + #nolint
   scale_color_manual(values = c("GDP" = "#000000", "Investment" = "#000000", "Consumption" = "#7d7d7d", "Hours Worked" = "#7d7d7d")) + #nolint
@@ -36,4 +32,4 @@ cycle_plots <- ggplot(cycles) +
   guides(linetype = guide_legend(override.aes = list(color = c("black", "#7d7d7d", "black", "#7d7d7d")))) #nolint
 
 
-ggsave("OUTPUT/MEDIA/cycles.png", plot = cycle_plots, height = 7, width = 11, units = "in") #nolint
+ggsave("OUTPUT/MEDIA/cycles.png", plot = cycle_plots, height = 10, width = 11, units = "in") #nolint
